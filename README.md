@@ -60,7 +60,56 @@ output = sess.run(x, feed_dict={x: 'Hello World'})
 
 
 
+### Tf.nn & Tf.train
 
+```python
+# 卷积函数
+tf.nn.convolution()
+tf.nn.conv2d(input, filter, strides, padding, use_cudnn_on_gpu=None, date_format=None,name=None)
+tf.nn.depthwise_conv2d()
+tf.nn.separable_conv2d()   #利用几个分离的卷积核
+tf.nn.atrous_conv2d()      #孔卷积 or 扩张卷积
+tf.nn.conv2d_transpose()    # conv2d 的转置
+tf.nn.conv1d()
+tf.nn.conv3d()
+tf.nn.conv3d_transpose()
+```
+
+```python
+# 池化
+tf.nn.avg_pool()
+tf.nn.max_pool()
+tf.nn.max_pool_with_argmax()     # 并且算出位置argmax，  只能在GPU下计算
+tf.nn.avg_pool3d()
+tf.nn.max_pool3d()
+tf.nn.fractional_avg_pool()     # 三维
+tf.nn.fractional_max_pool()   
+tf.nn.pool()
+```
+
+```python
+# 分类函数
+tf.nn.sigmoid_cross_entropy_with_logits()  #内部进行了sigmoid,网络的最后一层不需要sigmoid
+tf.nn.softmax()
+tf.nn.log_softmax()
+tf.nn.softmax_cross_entropy_with_logits()
+tf.nn.sparse_softmax_cross_entropy_with_logits()
+```
+
+```python
+# 优化算法
+tf.train.GradientDescentOptimizer()
+tf.train.AdadeltaOptimizer()
+tf.train.AdagradOptimizer()
+tf.train.AdagradDAOOptimizer()
+tf.train.MomentumOptimizer()
+tf.train.AdamOptimizer()
+tf.train.FtrlOptimizer()
+tf.train.RMSPropOptimizer()
+
+# BGD 批梯度下降
+# SGD 随机梯度下降
+```
 
 
 
