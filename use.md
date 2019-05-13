@@ -57,3 +57,79 @@ output = sess.run(x, feed_dict={x: 'Hello World'})
 类别用one hot进行编码，比如共有5个类，那么就有5个编码
 
 [1 0 0 0 0] ,[0 1 0 0 0], [0 0 1 1 1], [0 0 0 1 0] ,[0 0 0 0 1]
+
+
+
+
+
+
+
+# ML/DL常见的概念
+
+### 偏差bias和方差variance
+
+![è¿éåå¾çæè¿°](https://img-blog.csdn.net/20180905202253853?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzMwMzUzMjU5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+偏差（拟合不够）指的是算法的期望预测与真实预测之间的偏差程度， 反应了模型本身的拟合能力； 
+
+方差（过度拟合）度量了同等大小的训练集的变动导致学习性能的变化，刻画了数据扰动所导致的影响
+
+### 正则化regularization
+
+**抑制过拟合**   常用的正则化方法是在损失函数(Cost Function)中添加一个系数的l1−normm或l2−norm项，用来抑制过大的模型参数，从而缓解过拟合现象。
+
+**L2正则化 **  通过对大权重增加惩罚项以降低模型复杂度的一种方法
+
+**L1正则化**   通过对大权重增加惩罚项以降低模型复杂度的一种方法
+
+### 梯度下降
+
+![img](https://images2015.cnblogs.com/blog/743682/201511/743682-20151108172551399-1795553319.png)
+
+
+
+**各种梯度下降详情见链接**：
+
+ [**批量梯度下降(BGD)、随机梯度下降(SGD)以及小批量梯度下降(MBGD)的理解**](https://www.cnblogs.com/lliuye/p/9451903.html)
+
+
+
+### 精确率和召回率
+
+二分类：TP(真阳性) FP(假阳性) TN(真阴性) FN(假阴性)
+
+**精确率precision= TP/(TP+FP)   正确预测为正占全部预测为正的比例**
+
+**召回率recall=TP/(TP+FN)   正确预测为正占全部正样本的比例**
+
+**准确率accuracy  = (TN+TP)/(TP+TN+FN+FP)**
+
+### Softmax
+
+cross entropy 
+
+### 激活函数
+
+sigmoid         ![sigmodå½æ°å¬å¼](https://img-blog.csdn.net/20180104112208199?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+![sigmodå½æ°å¾](https://img-blog.csdn.net/20180104111804326?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+tanh             ![tanhå½æ°å¬å¼](https://img-blog.csdn.net/20180104112848849?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+![tanhå½æ°å¾](https://img-blog.csdn.net/20180104113045182?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+relu                ![reluå½æ°å¬å¼](https://img-blog.csdn.net/20180104113836278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+
+![reluå½æ°å¾](https://img-blog.csdn.net/20180104114009780?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2FuZ3lpNDEx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+### 过拟合和欠拟合
+
+过拟合：增大数据量； 采用正则化；dropout
+
+欠拟合：增加特征值；构造复杂多项式(泛化)；减少正则化参数
