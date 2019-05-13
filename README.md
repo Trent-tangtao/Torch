@@ -4,6 +4,10 @@
 
 `if __name__ == '__main__'`的意思是：当.py文件被直接运行时，`if __name__ == '__main__'`之下的代码块将被运行；当.py文件以模块形式被导入时，`if __name__ == '__main__'`之下的代码块不被运行
 
+
+
+## Tensorflow
+
 ### tf.truncated_normal
 
 tf.truncated_normal(shape, mean, stddev) : shape表示生成张量的维度，mean是均值，stddev是标准差。这个函数产生正太分布，均值和标准差自己设定。这是一个**截断的产生正太分布**的函数，就是说产生正太分布的值如果与均值的差值大于两倍的标准差，那就重新生成。和一般的正太分布的产生随机数据比起来，这个函数产生的随机数与均值的差距不会超过两倍的标准差，但是一般的别的函数是可能的。
@@ -110,6 +114,54 @@ tf.train.RMSPropOptimizer()
 # BGD 批梯度下降
 # SGD 随机梯度下降
 ```
+
+
+
+
+
+## Pytorch
+
+### nn.ReLU与F.ReLU
+
+```python
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.nn as nn
+
+class AlexNet_1(nn.Module):
+
+def __init__(self, num_classes=n):
+    super(AlexNet, self).__init__()
+    self.features = nn.Sequential(
+        nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=1),
+        nn.BatchNorm2d(64),
+        nn.ReLU(inplace=True),
+     )
+
+def forward(self, x):
+    x = self.features(x)
+
+class AlexNet_2(nn.Module):
+
+def __init__(self, num_classes=n):
+    super(AlexNet, self).__init__()
+    self.features = nn.Sequential(
+        nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=1),
+        nn.BatchNorm2d(64),
+     )
+
+def forward(self, x):
+    x = self.features(x)
+    x = F.ReLU(x)
+```
+
+在如上网络中，AlexNet_1与AlexNet_2实现的结果是一致的，但是可以看到将ReLU层添加到网络有两种不同的实现，即nn.ReLU和F.ReLU两种实现方法。
+
+其中**nn.ReLU作为一个层结构**，必须添加到nn.Module容器中才能使用，而**F.ReLU则作为一个函数调用**，看上去作为一个函数调用更方便更简洁。具体使用哪种方式，取决于编程风格。在PyTorch中,nn.X都有对应的函数版本F.X，但是并不是所有的F.X均可以用于forward或其它代码段中，因为当网络模型训练完毕时，在存储model时，在**forward中的F.X函数中的参数是无法保存的**。也就是说，**在forward中，使用的F.X函数一般均没有状态参数**，比如F.ReLU，F.avg_pool2d等，均没有参数，它们可以用在任何代码片段中。
+
+
+
+
 
 
 
